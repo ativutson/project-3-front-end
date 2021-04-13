@@ -29,3 +29,19 @@ th, td {
 .responsive {
     overflow-x: auto;
 }
+
+label, button {
+    margin-right: 10px;
+    margin-left: 790px;
+}
+
+.form-split {
+    display: flex;
+    flex-direction: column;
+  
+}
+
+.form1, .form2 {
+    margin-top: 40px;
+}
+
