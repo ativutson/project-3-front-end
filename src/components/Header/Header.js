@@ -1,4 +1,3 @@
-
 const Header = (props) => (
     <header>
         TRADE LOG

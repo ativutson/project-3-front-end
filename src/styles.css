@@ -14,24 +14,31 @@ header {
     padding-top: 10px;
 }
 
+ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+li {
+    list-style-type: none;
+}
+
 table {
-    /* border-collapse: collapse; */
+    border-collapse: collapse;
    
     margin-left: auto;
     margin-right: auto;
 }
 
 th {
-    /* padding: 15px 0 15px 0;  */
-    /* padding: 0 55px 0 55px; */
     text-align: center;
     border: 1px; 
     padding: 20px;
 }
 
-/* tr {
+tr {
     margin: 20px;
-} */
+}
 
 td {
     padding: 10px 0 10px 0;
@@ -49,7 +56,16 @@ label, .add-btn {
     margin-left: 790px;
 }
 
+.new-form {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+}
+
 .form1 {
+    display: flex;
+    flex-direction: row;
     margin-top: 40px;
     display: table-header-group;
 }

@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import "./styles.css";
 import moment from 'moment';
-import Twenty from './pages/Twenty/Twenty';
+import About from './pages/About/About';
 import { Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function App() {
 
@@ -170,38 +171,45 @@ export default function App() {
     }));
   }
 
-  // function handleCancel() {
-  //   setState(prevState => ({
-  //     ...prevState,
-  //     newTrade: {
-  //       no: "",
-  //       symbol: "",
-  //       tradeDate: "",
-  //       sellingDate: "",
-  //       days: "",
-  //       lOrS: "",
-  //       quantity: "",
-  //       totalCost: "",
-  //       totalReveneue: "",
-  //       dividend: "",
-  //       avgPrice: "",
-  //       sellingPrice: "",
-  //       pAndL: "",
-  //       returns: "",
-  //     },
-  //     editMode: false
-  //   }));
-  // }
+  function handleCancel() {
+    setState(prevState => ({
+      ...prevState,
+      newTrade: {
+        no: "",
+        symbol: "",
+        tradeDate: "",
+        sellingDate: "",
+        days: "",
+        lOrS: "",
+        quantity: "",
+        totalCost: "",
+        totalReveneue: "",
+        dividend: "",
+        avgPrice: "",
+        sellingPrice: "",
+        pAndL: "",
+        returns: "",
+      },
+      editMode: false
+    }));
+  }
   return (
     <>
-      {/* <Header />
-      <Switch>
-        <Route exact path="/2020" render={(props) =>
-          <Twenty {...props} />
-        } /> 
+      <Header />
+      {/* <BrowserRouter> */}
+        <Switch>
+          <Route exact path="/2020" component={About} />
+          
+           <ul>
+            <Link to='/2020'>
+              <li>About</li>
+            </Link>
+          </ul>
+        </Switch>
+      {/* </BrowserRouter> */}
 
 
-      </Switch> */}
+     
       <div className="responsive">
         <table>
           <tr>
@@ -244,7 +252,7 @@ export default function App() {
           ))}
         </table>
       </div>
-      <div className="form-split"> 
+      <div className="new-form"> 
 
         <form className="form1" onSubmit={handleSubmit} >
           <label>No.</label>
@@ -277,7 +285,8 @@ export default function App() {
           <input type="text" name="pAndL" autocomplete="off" value={state.newTrade.pAndL} onChange={handleChange} /> <br /> <br />
           <label>Return (%)</label>
           <input type="text" name="returns" autocomplete="off" value={state.newTrade.returns} onChange={handleChange}/> <br /> <br />
-          <button className="add-btn">ADD TRADE</button>
+          <button className="add-btn">{state.editMode ? 'EDIT TRADE' : 'ADD TRADE'}</button>
+        {state.editMode && <button className="edit-btn" onClick={handleCancel}>CANCEL</button>}
         </form>
       </div>
       
