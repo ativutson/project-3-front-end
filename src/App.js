@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import "./styles.css";
+import moment from 'moment';
+import Twenty from './pages/Twenty/Twenty';
+import { Route, Switch } from 'react-router-dom';
 
 export default function App() {
 
@@ -189,10 +192,16 @@ export default function App() {
   //     editMode: false
   //   }));
   // }
-  console.log(state);
   return (
     <>
-      <Header />
+      {/* <Header />
+      <Switch>
+        <Route exact path="/2020" render={(props) =>
+          <Twenty {...props} />
+        } /> 
+
+
+      </Switch> */}
       <div className="responsive">
         <table>
           <tr>
@@ -211,14 +220,15 @@ export default function App() {
             <th>P/L</th>
             <th>Return (%)</th>
           </tr>
-        </table>
-        <table>
+    
           {state.trades.map((trade) => (
-          <tr key={trade}>
+            <tr key={trade}>
             <td>{trade.no}</td>
             <td>{trade.symbol}</td>
-            <td>{trade.tradeDate}</td>
-            <td>{trade.sellingDate}</td>
+            <td>{moment(trade.tradeDate).format('L')}</td>
+            <td>{moment(trade.sellingDate).format('L')}</td>
+            <td>{trade.days}</td>
+            <td>{trade.lOrS}</td>
             <td>{trade.quantity}</td>
             <td>{trade.totalCost}</td>
             <td>{trade.totalRevenue}</td>
@@ -226,9 +236,9 @@ export default function App() {
             <td>{trade.avgPrice}</td>
             <td>{trade.sellingPrice}</td>
             <td>{trade.pAndL}</td>
-            <td>{trade.return}</td>
-            <button onClick={() => handleDelete(trade._id)}>DELETE</button>
-            { !state.editMode && <button onClick={() => handleEdit(trade._id)}>EDIT</button> }
+            <td>{trade.returns}</td>
+            <td><button className="delete-btn" onClick={() => handleDelete(trade._id)}>DELETE</button></td>
+            <td>{ !state.editMode && <button className="edit-btn" onClick={() => handleEdit(trade._id)}>EDIT</button> }</td>
 
           </tr>
           ))}
@@ -238,36 +248,36 @@ export default function App() {
 
         <form className="form1" onSubmit={handleSubmit} >
           <label>No.</label>
-          <input type="text" name="no" value={state.newTrade.no} onChange={handleChange} /> <br /> <br />
+          <input type="text" name="no" autocomplete="off" value={state.newTrade.no} onChange={handleChange} /> <br /> <br />
           <label>Symbol</label>
-          <input type="text" name="symbol" value={state.newTrade.symbol} onChange={handleChange}/> <br /> <br />
+          <input type="text" name="symbol" autocomplete="off" value={state.newTrade.symbol} onChange={handleChange}/> <br /> <br />
           <label>Trade Date</label>
-          <input type="text" name="tradeDate" value={state.newTrade.tradeDate} onChange={handleChange}/> <br /> <br />
+          <input type="text" name="tradeDate" autocomplete="off" value={state.newTrade.tradeDate} onChange={handleChange}/> <br /> <br />
           <label>Selling Date</label>
-          <input type="text" name="sellingDate" value={state.newTrade.sellingDate} onChange={handleChange}/> <br /> <br />
+          <input type="text" name="sellingDate" autocomplete="off" value={state.newTrade.sellingDate} onChange={handleChange}/> <br /> <br />
           <label>Day(s)</label>
-          <input type="text" name="days" value={state.newTrade.days} onChange={handleChange}/> <br /> <br />
+          <input type="text" name="days" autocomplete="off" value={state.newTrade.days} onChange={handleChange}/> <br /> <br />
           <label>Long/Short</label>
-          <input type="text" name="lOrS" value={state.newTrade.lOrS} onChange={handleChange}/> <br /> <br />
+          <input type="text" name="lOrS" autocomplete="off" value={state.newTrade.lOrS} onChange={handleChange}/> <br /> <br />
           <label>Quantity</label>
-          <input type="text" name="quantity" value={state.newTrade.quantity} onChange={handleChange}/> <br /> <br />
+          <input type="text" name="quantity" autocomplete="off" value={state.newTrade.quantity} onChange={handleChange}/> <br /> <br />
         {/* </form>
         <form className="form2" onSubmit={handleSubmit}> */}
           <label>Total Cost</label>
-          <input type="text" name="totalCost" value={state.newTrade.totalCost} onChange={handleChange}/> <br /> <br />
+          <input type="text" name="totalCost" autocomplete="off" value={state.newTrade.totalCost} onChange={handleChange}/> <br /> <br />
           <label>Total Revenue</label>
-          <input type="text" name="totalRevenue" value={state.newTrade.totalRevenue} onChange={handleChange}/> <br /> <br />
+          <input type="text" name="totalRevenue" autocomplete="off" value={state.newTrade.totalRevenue} onChange={handleChange}/> <br /> <br />
           <label>Dividend</label>
-          <input type="text" name="dividend" value={state.newTrade.dividend} onChange={handleChange}/> <br /> <br />
+          <input type="text" name="dividend" autocomplete="off" value={state.newTrade.dividend} onChange={handleChange}/> <br /> <br />
           <label>Average Price</label>
-          <input type="text" name="avgPrice" value={state.newTrade.avgPrice} onChange={handleChange}/> <br /> <br />
+          <input type="text" name="avgPrice" autocomplete="off" value={state.newTrade.avgPrice} onChange={handleChange}/> <br /> <br />
           <label>Selling Price</label>
-          <input type="text" name="sellingPrice" value={state.newTrade.sellingPrice} onChange={handleChange}/> <br /> <br />
+          <input type="text" name="sellingPrice" autocomplete="off" value={state.newTrade.sellingPrice} onChange={handleChange}/> <br /> <br />
           <label>Profit & Loss</label>
-          <input type="text" name="pAndL" value={state.newTrade.pAndL} onChange={handleChange} /> <br /> <br />
+          <input type="text" name="pAndL" autocomplete="off" value={state.newTrade.pAndL} onChange={handleChange} /> <br /> <br />
           <label>Return (%)</label>
-          <input type="text" name="returns" value={state.newTrade.returns} onChange={handleChange}/> <br /> <br />
-          <button>ADD TRADE</button>
+          <input type="text" name="returns" autocomplete="off" value={state.newTrade.returns} onChange={handleChange}/> <br /> <br />
+          <button className="add-btn">ADD TRADE</button>
         </form>
       </div>
       

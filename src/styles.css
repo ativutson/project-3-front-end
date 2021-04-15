@@ -15,33 +15,47 @@ header {
 }
 
 table {
-    border-collapse: collapse;
-    width: 100%;
+    /* border-collapse: collapse; */
+   
+    margin-left: auto;
+    margin-right: auto;
 }
 
-th, td {
-    text-align: left;
-    padding-left: 50px;
-    padding-top: 20px;
-    padding-right: 50px;
+th {
+    /* padding: 15px 0 15px 0;  */
+    /* padding: 0 55px 0 55px; */
+    text-align: center;
+    border: 1px; 
+    padding: 20px;
 }
+
+/* tr {
+    margin: 20px;
+} */
+
+td {
+    padding: 10px 0 10px 0;
+    text-align: center;
+}
+
+
 
 .responsive {
     overflow-x: auto;
 }
 
-label, button {
+label, .add-btn {
     margin-right: 10px;
     margin-left: 790px;
 }
 
-.form-split {
-    display: flex;
-    flex-direction: column;
-  
+.form1 {
+    margin-top: 40px;
+    display: table-header-group;
 }
 
-.form1, .form2 {
-    margin-top: 40px;
-}
+tr:nth-child(even)
+{
+  background: #D0D0D0;
+}  
 
