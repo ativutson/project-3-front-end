@@ -56,7 +56,9 @@ export default function App() {
       const trades = await fetch(BASE_URL, {
         method: 'POST',
         headers: {
-          'Content-type': 'Application/json'
+          'Content-type': 'Application/json',
+          'Accept': 'application/json'
+
         },
         body: JSON.stringify({...state.newTrade })
       }).then(res => res.json());
@@ -88,7 +90,9 @@ export default function App() {
       const trades = await fetch(`${BASE_URL}/${_id}`, {
         method: 'PUT',
         headers: {
-          'Content-type': 'Application/json'
+          'Content-type': 'Application/json',
+          'Accept': 'application/json'
+
         },
         body: JSON.stringify({ no, symbol, tradeDate, sellingDate, days, lOrS, quantity, totalCost, 
           totalRevenue, dividend, avgPrice, sellingPrice, pAndL, returns })
