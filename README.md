@@ -1,7 +1,6 @@
 # Trade Log
 
 The trade log is an app based on a common tool that traders use to record each trade which includes details such as average price, entry and exit points, and time of trade. A trade log is very important for traders as it gives them an overview of their trading history which they can learn to avoid mistakes in the future.
-https://sons-awesome-blog.herokuapp.com/blogs
 
 ![Trade Log](https://user-images.githubusercontent.com/22122032/114970454-7c967080-9e48-11eb-916f-cef5aa9148cd.png)
 
@@ -18,6 +17,10 @@ https://sons-awesome-blog.herokuapp.com/blogs
 - GitHub
 - Heroku
 - Google Fonts
+
+# Getting Started
+- https://trade-log.netlify.app/
+- https://trello.com/b/snFxGsRi/trade-log
 
 # Unsolved Problems
 - There are no linked pages to make the app SPA. 
