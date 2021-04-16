@@ -29,7 +29,7 @@ export default function App() {
 
   async function getAppData() {
     try {
-      const BASE_URL = 'https://trade-log-project.herokuapp.com/api/trades';
+      const BASE_URL = 'http://localhost:3002/api/trades';
       const trades = await fetch(BASE_URL).then(res => res.json());
       console.log(trades);
       setState((prevState) => ({
@@ -49,7 +49,7 @@ export default function App() {
 
     event.preventDefault();
     
-    const BASE_URL = 'https://trade-log-project.herokuapp.com/api/trades';
+    const BASE_URL = 'http://localhost:3002/api/trades';
 
     if(!state.editMode) {
 
@@ -130,7 +130,7 @@ export default function App() {
 
   async function handleDelete(tradeId) {
 
-    const URL = `https://trade-log-project.herokuapp.com/api/trades/${tradeId}`;
+    const URL = `http://localhost:3002/api/trades/${tradeId}`;
     
     const trades = await fetch(URL, {
       method: 'DELETE'
