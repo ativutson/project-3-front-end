@@ -2,9 +2,6 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import "./styles.css";
 import moment from 'moment';
-import About from './pages/About/About';
-import { Route, Switch } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 
 export default function App() {
 
@@ -196,20 +193,6 @@ export default function App() {
   return (
     <>
       <Header />
-      {/* <BrowserRouter> */}
-        <Switch>
-          <Route exact path="/2020" component={About} />
-          
-           <ul>
-            <Link to='/2020'>
-              <li>About</li>
-            </Link>
-          </ul>
-        </Switch>
-      {/* </BrowserRouter> */}
-
-
-     
       <div className="responsive">
         <table>
           <tr>
@@ -228,7 +211,6 @@ export default function App() {
             <th>P/L</th>
             <th>Return (%)</th>
           </tr>
-    
           {state.trades.map((trade) => (
             <tr key={trade}>
             <td>{trade.no}</td>
@@ -247,13 +229,11 @@ export default function App() {
             <td>{trade.returns}</td>
             <td><button className="delete-btn" onClick={() => handleDelete(trade._id)}>DELETE</button></td>
             <td>{ !state.editMode && <button className="edit-btn" onClick={() => handleEdit(trade._id)}>EDIT</button> }</td>
-
           </tr>
           ))}
         </table>
       </div>
       <div className="new-form"> 
-
         <form className="form1" onSubmit={handleSubmit} >
           <label>No.</label>
           <input type="text" name="no" autocomplete="off" value={state.newTrade.no} onChange={handleChange} /> <br /> <br />
@@ -269,8 +249,6 @@ export default function App() {
           <input type="text" name="lOrS" autocomplete="off" value={state.newTrade.lOrS} onChange={handleChange}/> <br /> <br />
           <label>Quantity</label>
           <input type="text" name="quantity" autocomplete="off" value={state.newTrade.quantity} onChange={handleChange}/> <br /> <br />
-        {/* </form>
-        <form className="form2" onSubmit={handleSubmit}> */}
           <label>Total Cost</label>
           <input type="text" name="totalCost" autocomplete="off" value={state.newTrade.totalCost} onChange={handleChange}/> <br /> <br />
           <label>Total Revenue</label>
@@ -289,10 +267,16 @@ export default function App() {
         {state.editMode && <button className="edit-btn" onClick={handleCancel}>CANCEL</button>}
         </form>
       </div>
-      
     </>
   );
 }
+    
+
+
+     
+    
+
+      
 
 
 
