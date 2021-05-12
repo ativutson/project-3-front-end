@@ -29,7 +29,7 @@ export default function App() {
 
   async function getAppData() {
     try {
-      const BASE_URL = 'http://localhost:3002/api/trades';
+      const BASE_URL = 'https://trade-log-project.herokuapp.com/api/trades';
       const trades = await fetch(BASE_URL).then(res => res.json());
       console.log(trades);
       setState((prevState) => ({
@@ -49,7 +49,7 @@ export default function App() {
 
     event.preventDefault();
     
-    const BASE_URL = 'http://localhost:3002/api/trades';
+    const BASE_URL = 'https://trade-log-project.herokuapp.com/api/trades';
 
     if(!state.editMode) {
 
@@ -57,7 +57,6 @@ export default function App() {
         method: 'POST',
         headers: {
           'Content-type': 'Application/json',
-          'Accept': 'application/json'
 
         },
         body: JSON.stringify({...state.newTrade })
@@ -91,8 +90,6 @@ export default function App() {
         method: 'PUT',
         headers: {
           'Content-type': 'Application/json',
-          'Accept': 'application/json'
-
         },
         body: JSON.stringify({ no, symbol, tradeDate, sellingDate, days, lOrS, quantity, totalCost, 
           totalRevenue, dividend, avgPrice, sellingPrice, pAndL, returns })
@@ -299,7 +296,7 @@ export default function App() {
 
             
                
-
+ 
                   
             
 
